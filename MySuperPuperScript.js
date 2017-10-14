@@ -15,6 +15,7 @@ line.style.backgroundImage = 'url("https://i.imgur.com/oX2KOlw.gif")';
 line.style.backgroundSize = 'auto 100%'
 line.style.backgroundRepeat = 'no-repeat';
 line.style.backgroundPosition = 'center';
+line.addEventListener("click", createKEK)
 document.getElementsByTagName("body")[0].appendChild(line);
 setInterval(function() {
     line.style.backgroundColor = randomColor();
