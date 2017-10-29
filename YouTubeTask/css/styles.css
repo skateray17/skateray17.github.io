@@ -1,0 +1,37 @@
+.searchBar {
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    width: 60%;
+}
+
+.searchBox {
+    display: inline-flex;
+    flex: 2;
+    width : 50%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 22px;
+    outline: none;
+    border: none;
+}
+
+.searchButton {
+    background-color: white;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.searchButton:hover{
+    background-color: rgb(167, 164, 164);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+
+
+body{
+    background-color: rgb(26, 28, 71);
+}
