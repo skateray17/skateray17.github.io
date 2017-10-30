@@ -1,27 +1,18 @@
-let body = document.getElementById('body');
-let div = document.createElement('div');
-// let inputVideoName = document.createElement('input');
+const body = document.getElementById('body');
+const searchBarDiv = document.createElement('div');
+let videoName;
+let result;
 
-// inputVideoName.type = 'text';
-// inputVideoName.className = 'searchBox';
-// div.appendChild(inputVideoName);
-
-// let inputLabel = document.createElement('label');
-// let inputButton = document.createElement('input');
-// inputButton.type = 'submit';
-// inputButton.value = '<i class="material-icons">search</i>';
-// inputButton.className = 'searchButton';
-// inputButton.addEventListener('click', () => { //TODO
-// });
-// div.appendChild(inputButton);
-div.innerHTML = `
+searchBarDiv.innerHTML = `
 <input type="text" class="searchBox" placeholder = "Your request...">
-<button class = "searchButton" onclick = "sendRequest()" search>
+<button class = "searchButton" onclick = "searchButtonPressed()" search>
     <i class = "material-icons">search</i>
 </button>`;
 
-div.className = 'searchBar';
-body.appendChild(div);
+searchBarDiv.className = 'searchBar';
+
+searchBarDiv.addEventListener('keypress', checkButton);
+body.appendChild(searchBarDiv);
 
 function init() {
     gapi.client.setApiKey("AIzaSyBEx_BVKa13PtyxxAUC5jj2PCny_B-f5X4");
@@ -30,22 +21,35 @@ function init() {
     });
 }
 
+function checkButton(e){
+    if(e.keyCode === 13){
+        searchButtonPressed();
+    }
+}
+
+function searchButtonPressed(){
+    videoName = document.getElementsByClassName("searchBox")[0].value;
+    result = undefined;
+    sendRequest();
+}
+
 function sendRequest(){
-    //alert('Hello, world!');
-    console.log(document.getElementsByClassName("searchBox")[0].value);
-    var request = gapi.client.youtube.search.list({
+    let request = gapi.client.youtube.search.list({
         part: "snippet",
         type: "video",
-        q: /*encodeURIComponent($("#search").val()).replace(/%20/g, "+")*/ /*"kitty"*/document.getElementsByClassName("searchBox")[0].value,
-        maxResults: 3,
+        q: videoName,
+        maxResults: 15,
+        pageToken: result ? result.nextPageToken : undefined,
         order: "viewCount",
-        publishedAfter: "2015-01-01T00:00:00Z"
-   }); 
-   // execute the request
-   request.execute(function(response) {
-      var results = response.result;
-      console.log(results);
     });
+
+   //console.log(request);
+   
+   request.execute(function(response) {
+      result = response.result;
+      console.log(result);
+    });
+
 }
 
 let button = document.getElementsByClassName('searchButton')[0];
