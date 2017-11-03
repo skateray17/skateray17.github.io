@@ -45,9 +45,20 @@ function sendRequest(){
 
    //console.log(request);
    
-   request.execute(function(response) {
-      result = response.result;
-      console.log(result);
+    request.execute(function(response) {
+        result = response.result;
+        let tmp = '';
+        result.items.forEach((element) => {
+            tmp += element.id.videoId + ',';
+        });
+        let request_stat = gapi.client.youtube.videos.list({ 
+            id: tmp, 
+            part: 'statistics', 
+        });  
+        request_stat.execute((responce_stat)=>{ 
+          console.log(responce_stat.result);  
+        });
+        console.log(result);
     });
 
 }
