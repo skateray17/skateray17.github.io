@@ -75,7 +75,7 @@ function createVideo(index, stat){
     clip.className = 'clip';
     clip.innerHTML = `
     <img class = "clipPicture" src = ${video.snippet.thumbnails.medium.url}>
-    <a class = "clipRef" href = ${"https://www.youtube.com/embed/" + video.id.videoId}>
+    <a class = "clipRef" href = ${"https://www.youtube.com/watch?v=" + video.id.videoId}>
         ${video.snippet.title}
     </a>
     <p>${video.snippet.description}</p>
