@@ -25,6 +25,41 @@ function init() {
     });
 }
 
+let mouseDown = false;
+let prevX, prevY;
+let requestSending = false;
+videosDiv.style.left = '0px';
+
+
+videosDiv.addEventListener('mousemove', (e) => {
+    e.preventDefault();
+    if(mouseDown){
+        console.log('ti pidor');
+        // if(e.clientX < prevX){
+        //     videosDiv.style.left = parseInt(videosDiv.style.left) - 1 + 'px';
+        // } else {
+        //     if (e.clientX > prevX) {
+        //         videosDiv.style.left = parseInt(videosDiv.style.left) + 1 + 'px';
+        //     }
+        // }
+        videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + e.clientX - prevX, 8) + 'px';
+    }
+    if(!requestSending && videosDiv.childNodes.length * 360 - Math.abs(parseInt(videosDiv.style.left)) - 500 < window.innerWidth){
+        sendRequest();
+        requestSending = true;
+    } 
+    prevX = e.clientX;
+    prevY = e.clientY;
+});
+
+videosDiv.addEventListener('mousedown', () => {
+    mouseDown = true;
+});
+
+videosDiv.addEventListener('mouseup', () => {
+    mouseDown = false;
+});
+
 function checkButton(e){
     if(e.keyCode === 13){
         searchButtonPressed();
@@ -35,6 +70,8 @@ function searchButtonPressed(){
     videoName = document.getElementsByClassName("searchBox")[0].value;
     result = undefined;
     videosDiv.innerHTML = '';
+    videosDiv.style.left = '8px';
+    videosDiv.style.width = '0px';
     sendRequest();
 }
 
@@ -66,7 +103,7 @@ function sendRequest(){
         });
         console.log(result);
     });
-
+    requestSending = false;         
 }
 
 function createVideo(index, stat){
@@ -86,13 +123,13 @@ function createVideo(index, stat){
     <p>View count: ${stat.items[index].statistics.viewCount}</p>
     `;
     return clip;
-    videosDiv.appendChild(clip);
-
 }
 
 function insertVideosFromResponse(statistics){
     for(let i = 0; i < result.items.length; i++){
-        videosDiv.appendChild(createVideo(i, statistics));        
+        let video = createVideo(i, statistics);
+        videosDiv.style.width = parseInt(videosDiv.style.width) + 360 + 'px';
+        videosDiv.appendChild(video);   
     }
 }
 

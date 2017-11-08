@@ -34,12 +34,18 @@
 
 body{
     background-color: rgb(26, 28, 71);
+    height: 100vh;
+    overflow: hidden;
 }
 
 .clip{
     display: inline-block;
     width: 320px;
+    position: relative;
     background-color: white;
+    margin: 20px;
+    height: 100%;
+    vertical-align: top;
 }
 
 .clipPicture{
@@ -48,4 +54,11 @@ body{
 
 .clipRef{
     display: block;
+}
+
+.videosDiv{
+    position: relative;
+    height: 80%;
+    width: 0px;
+    vertical-align: middle;
 }
