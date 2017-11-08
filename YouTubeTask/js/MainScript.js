@@ -21,7 +21,6 @@ body.appendChild(videosDiv);
 function init() {
     gapi.client.setApiKey("AIzaSyBEx_BVKa13PtyxxAUC5jj2PCny_B-f5X4");
     gapi.client.load("youtube", "v3", function() {
-        // yt api is ready
     });
 }
 
@@ -34,14 +33,6 @@ videosDiv.style.left = '0px';
 videosDiv.addEventListener('mousemove', (e) => {
     e.preventDefault();
     if(mouseDown){
-        console.log('ti pidor');
-        // if(e.clientX < prevX){
-        //     videosDiv.style.left = parseInt(videosDiv.style.left) - 1 + 'px';
-        // } else {
-        //     if (e.clientX > prevX) {
-        //         videosDiv.style.left = parseInt(videosDiv.style.left) + 1 + 'px';
-        //     }
-        // }
         videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + e.clientX - prevX, 8) + 'px';
     }
     if(!requestSending && videosDiv.childNodes.length * 360 - Math.abs(parseInt(videosDiv.style.left)) - 500 < window.innerWidth){
