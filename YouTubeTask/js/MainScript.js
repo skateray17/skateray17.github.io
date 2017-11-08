@@ -93,8 +93,8 @@ function sendRequest(){
           insertVideosFromResponse(statistics);          
         });
         console.log(result);
-    });
-    requestSending = false;         
+        requestSending = false;   
+    });      
 }
 
 function createVideo(index, stat){
