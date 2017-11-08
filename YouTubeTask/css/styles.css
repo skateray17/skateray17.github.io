@@ -46,6 +46,7 @@ body{
     margin: 20px;
     height: 100%;
     vertical-align: top;
+    overflow: hidden;
 }
 
 .clipPicture{

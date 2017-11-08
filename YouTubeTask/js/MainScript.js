@@ -33,7 +33,11 @@ videosDiv.style.left = '0px';
 videosDiv.addEventListener('mousemove', (e) => {
     e.preventDefault();
     if(mouseDown){
-        videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + e.clientX - prevX, 8) + 'px';
+        if(e.clientX > prevX){
+            videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + e.clientX - prevX, 8) + 'px';
+        } else {
+            videosDiv.style.left = Math.max(parseInt(videosDiv.style.left) + e.clientX - prevX, -360 * (videosDiv.childNodes.length - 1)) + 'px';
+        }
     }
     if(!requestSending && videosDiv.childNodes.length * 360 - Math.abs(parseInt(videosDiv.style.left)) - 500 < window.innerWidth){
         sendRequest();
@@ -63,6 +67,7 @@ function searchButtonPressed(){
     videosDiv.innerHTML = '';
     videosDiv.style.left = '8px';
     videosDiv.style.width = '0px';
+    requestSending = false;
     sendRequest();
 }
 
@@ -93,7 +98,9 @@ function sendRequest(){
           insertVideosFromResponse(statistics);          
         });
         console.log(result);
-        requestSending = false;   
+        if(result.items.length){
+            requestSending = false; 
+        }  
     });      
 }
 
