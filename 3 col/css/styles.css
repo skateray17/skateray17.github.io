@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header{
+    height: 20px;
+    background-color: blue;
+}
+.contentWrapper {
+    margin: 0px;
+    flex: 1 0 auto;
+    display: flex;
+    height: 1%;
+    width: 100%;
+}
+
+.left,
+.right,
+.content{
+    display: inline-flex;
+    height: 100%;
+}
+
+.left,
+.right{
+    width: 25%;
+}
+
+.content{
+    width: 100%;
+    background-color: plum;
+}
+
+.left{
+    background-color: royalblue;
+}
+
+.right {
+    background-color: greenyellow;
+}
+
+.footer {
+    height: 20px;
+    flex: 0 0 auto;
+    background-color: red;
+}
