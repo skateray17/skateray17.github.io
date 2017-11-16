@@ -30,34 +30,48 @@
     transition: all 1s ease;
 }
 
+html{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
 
 
 body{
     background-color: rgb(26, 28, 71);
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    overflow: inherit;
 }
 
 .clip{
     display: inline-block;
     width: 320px;
     position: relative;
-    background-color: white;
+    background-color: lightgray;
     margin: 20px;
     height: 100%;
-    vertical-align: top;
+    vertical-align: middle;
     overflow: hidden;
+    max-height: 500px;
+    border-radius: 5px;
 }
 
 .clipPicture{
     display: block;
+    margin-top: 5px;
 }
 
 .clipRef{
     display: block;
 }
-
+.videosDiv:before{
+    display: inline-block;
+    height: 80%;
+    vertical-align: middle;
+}
 .videosDiv{
+    display: inline-block;
     position: relative;
     height: 80%;
     width: 0px;

@@ -29,31 +29,45 @@ let prevX, prevY;
 let requestSending = false;
 videosDiv.style.left = '0px';
 
-
-videosDiv.addEventListener('mousemove', (e) => {
+function moveVidDiv(e){
     e.preventDefault();
     if(mouseDown){
+        let curX = e.clientX || e['touches'][0]['clientX'];
+        let curY = e.clientX || e['touches'][0]['clientY'];
         if(e.clientX > prevX){
-            videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + e.clientX - prevX, 8) + 'px';
+            videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + curX - prevX, 8) + 'px';
         } else {
-            videosDiv.style.left = Math.max(parseInt(videosDiv.style.left) + e.clientX - prevX, -360 * (videosDiv.childNodes.length - 1)) + 'px';
+            videosDiv.style.left = Math.max(parseInt(videosDiv.style.left) + curX - prevX, -360 * (videosDiv.childNodes.length - 1)) + 'px';
         }
     }
     if(!requestSending && videosDiv.childNodes.length * 360 - Math.abs(parseInt(videosDiv.style.left)) - 500 < window.innerWidth){
         sendRequest();
         requestSending = true;
     } 
-    prevX = e.clientX;
-    prevY = e.clientY;
-});
+    prevX = e.clientX || e['touches'][0]['clientX'];
+    prevY = e.clientY || e['touches'][0]['clientY'];
+}
 
-videosDiv.addEventListener('mousedown', () => {
+videosDiv.addEventListener('mousemove', moveVidDiv);
+
+videosDiv.addEventListener('touchmove', moveVidDiv);
+function mouseDownFunc(e){
     mouseDown = true;
-});
+    prevX = e.clientX || e['touches'][0]['clientX'];
+    prevY = e.clientY || e['touches'][0]['clientY'];
+}
 
-videosDiv.addEventListener('mouseup', () => {
+function mouseUpFunc(){
     mouseDown = false;
-});
+}
+
+videosDiv.addEventListener('mousedown', mouseDownFunc);
+
+videosDiv.addEventListener('touchstart', mouseDownFunc)
+
+videosDiv.addEventListener('mouseup', mouseUpFunc);
+
+videosDiv.addEventListener('touchend', mouseUpFunc);
 
 function checkButton(e){
     if(e.keyCode === 13){
