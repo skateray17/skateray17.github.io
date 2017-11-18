@@ -34,7 +34,7 @@ function moveVidDiv(e){
     if(mouseDown){
         let curX = e.clientX || e['touches'][0]['clientX'];
         let curY = e.clientX || e['touches'][0]['clientY'];
-        if(e.clientX > prevX){
+        if(curX > prevX){
             videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + curX - prevX, 8) + 'px';
         } else {
             videosDiv.style.left = Math.max(parseInt(videosDiv.style.left) + curX - prevX, -360 * (videosDiv.childNodes.length - 1)) + 'px';
@@ -69,6 +69,8 @@ videosDiv.addEventListener('mouseup', mouseUpFunc);
 
 videosDiv.addEventListener('touchend', mouseUpFunc);
 
+//videosDiv.addEventListener('mouseout', mouseUpFunc);
+
 function checkButton(e){
     if(e.keyCode === 13){
         searchButtonPressed();
@@ -95,7 +97,7 @@ function sendRequest(){
         order: "viewCount",
     });
    
-    request.execute(function(response) {
+    request.execute((response) => {
         result = response.result;
         let tmp = '';
         result.items.forEach((element) => {
