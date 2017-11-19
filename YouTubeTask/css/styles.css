@@ -60,8 +60,8 @@ body{
 .clipPicture{
     display: block;
     margin-top: 5px;
-    max-width: 320px;
-    height: 36%;
+    max-height: 180px;
+    width: 100%;
 }
 
 .clipRef{
@@ -73,6 +73,7 @@ body{
     width: 100%;
     text-align: center;
     max-height: 30%;
+    overflow: hidden;
 }
 
 .videosDiv:before{
@@ -98,7 +99,7 @@ body{
 
 .personIcon{
     display: inline-block;
-    margin-left: 10%;
+    margin-left: 3%;
 }
 
 .usefullText{

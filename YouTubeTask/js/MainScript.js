@@ -2,6 +2,7 @@ const body = document.getElementById('body');
 const searchBarDiv = document.createElement('div');
 let videoName;
 let result;
+let videosArray = [];
 let videosDiv = document.createElement('div');
 
 videosDiv.className = 'videosDiv';
@@ -37,12 +38,14 @@ function moveVidDiv(e){
         if(curX > prevX){
             videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + curX - prevX, 8) + 'px';
         } else {
-            videosDiv.style.left = Math.max(parseInt(videosDiv.style.left) + curX - prevX, -360 * (videosDiv.childNodes.length - 1)) + 'px';
+            videosDiv.style.left = Math.max(parseInt(videosDiv.style.left) + curX - prevX,
+                                         -360 * (videosDiv.childNodes.length - 1)) + 'px';
         }
     }
-    if(!requestSending && videosDiv.childNodes.length * 360 - Math.abs(parseInt(videosDiv.style.left)) - 500 < window.innerWidth){
-        sendRequest();
+    if(!requestSending && videosDiv.childNodes.length * (videosDiv.childNodes[0].offsetWidth + 40) - 
+                                Math.abs(parseInt(videosDiv.style.left)) < 2 * window.innerWidth){
         requestSending = true;
+        sendRequest();
     } 
     prevX = e.clientX || e['touches'][0]['clientX'];
     prevY = e.clientY || e['touches'][0]['clientY'];
@@ -109,14 +112,19 @@ function sendRequest(){
         });
           
         request_stat.execute((responce_stat)=>{ 
-          console.log(responce_stat.result);  
-          let statistics = responce_stat.result;
-          insertVideosFromResponse(statistics);          
+            console.log(responce_stat.result);  
+            let statistics = responce_stat.result;
+            insertVideosFromResponse(statistics);
+            statistics.items.forEach((stat, ind) => {
+                videosArray.push({'snippet': result.items[ind],
+                'statistics': statistics}); 
+            });           
+            if(result.items.length){
+                requestSending = false; 
+            }
+            console.log(result);
+            console.log(videosArray);  
         });
-        console.log(result);
-        if(result.items.length){
-            requestSending = false; 
-        }  
     });      
 }
 
@@ -166,3 +174,12 @@ function insertVideosFromResponse(statistics){
     }
 }
 
+body.onresize = () => {
+    if(videosDiv.childNodes.length){
+        let width = Math.min(320, videosDiv.offsetHeight * 0.64);
+        videosDiv.childNodes.forEach((node) => {
+           node.style.width =  width + 'px';
+        });
+        videosDiv.style.width = (width + 40) * videosDiv.childNodes.length + 'px';
+    }
+}
