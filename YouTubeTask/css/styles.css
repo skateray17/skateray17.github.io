@@ -46,7 +46,7 @@ body{
 
 .clip{
     display: inline-block;
-    width: 320px;
+    max-width: 320px;
     position: relative;
     background-color: lightgray;
     margin: 20px;
@@ -60,16 +60,27 @@ body{
 .clipPicture{
     display: block;
     margin-top: 5px;
+    max-width: 320px;
+    height: 36%;
 }
 
 .clipRef{
     display: block;
+    background-color: rgba(0, 128, 0, 0.7);
+    color: white;
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    text-align: center;
+    max-height: 30%;
 }
+
 .videosDiv:before{
     display: inline-block;
     height: 80%;
     vertical-align: middle;
 }
+
 .videosDiv{
     display: inline-block;
     position: relative;
