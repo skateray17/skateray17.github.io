@@ -76,10 +76,12 @@ body{
 }
 
 .videosDiv:before{
+    content: "";
     display: inline-block;
-    height: 80%;
+    min-height: inherit;
+    height: 100%;
     vertical-align: middle;
-}
+  }
 
 .videosDiv{
     display: inline-block;
@@ -87,4 +89,22 @@ body{
     height: 80%;
     width: 0px;
     vertical-align: middle;
+    text-align: center;
+}
+
+.channelName{
+    text-decoration: none;
+}
+
+.personIcon{
+    display: inline-block;
+    margin-left: 10%;
+}
+
+.usefullText{
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    font-size: 24px;
+    width: calc(80% - 24px);
 }

@@ -129,12 +129,31 @@ function createVideo(index, stat){
     <a class = "clipRef" href = ${"https://www.youtube.com/watch?v=" + video.id.videoId}>
         ${video.snippet.title}
     </a>
-    <p>${video.snippet.description}</p>
     <a class = "channelName" href = ${"https://www.youtube.com/channel/" + video.snippet.channelId}>
-        ${video.snippet.channelTitle}
+        <div class = "personIcon">
+            <i class = "material-icons">person</i>
+        </div>
+        <div class = "usefullText">
+            ${video.snippet.channelTitle}
+        </div>
     </a>
-    <p>Publised at ${video.snippet.publishedAt}</p>
-    <p>View count: ${stat.items[index].statistics.viewCount}</p>
+    <div>
+        <div class = "personIcon">
+            <i class = "material-icons">today</i>
+        </div> 
+        <div class = "usefullText">
+            ${video.snippet.publishedAt.substr(0, 10)}
+        </div>
+    </div>
+    <div>
+        <div class = "personIcon">
+            <i class = "material-icons">visibility</i>
+        </div> 
+        <div class = "usefullText">
+            ${stat.items[index].statistics.viewCount}
+        </div>
+    </div>
+    <p>${video.snippet.description}</p>
     `;
     return clip;
 }
