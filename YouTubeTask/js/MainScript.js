@@ -163,6 +163,7 @@ function createVideo(index, stat){
     </div>
     <p>${video.snippet.description}</p>
     `;
+    clip.style.width = Math.min(320, videosDiv.offsetHeight * 0.64) + 'px';
     return clip;
 }
 
