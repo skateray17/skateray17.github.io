@@ -42,6 +42,7 @@ body{
     height: 100%;
     width: 100%;
     overflow: inherit;
+    margin-left: 0;
 }
 
 .clip{
@@ -49,7 +50,6 @@ body{
     max-width: 320px;
     position: relative;
     background-color: lightgray;
-    margin: 20px;
     height: 100%;
     vertical-align: middle;
     overflow: hidden;
