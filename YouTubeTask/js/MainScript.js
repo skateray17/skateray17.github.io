@@ -34,7 +34,9 @@ let currentPage;
 videosDiv.style.left = '0px';
 
 function moveVidDiv(e){
-    e.preventDefault();
+    if(e.clientX !== undefined){
+        e.preventDefault();
+    }
     if(mouseDown){
         let curX = e.clientX || (e.clientX === 0 ? 0 : e['touches'][0]['clientX']);
         if(curX > prevX){
@@ -65,30 +67,50 @@ function mouseDownFunc(e){
     startX = prevX = e.clientX || e['touches'][0]['clientX'];
 }
 
+function changePage(dir){
+
+    videosDiv.style.transitionDuration = '1s';    
+    switch (dir){
+        case 1:
+            if(currentPage < 0){
+                videosDiv.style.left = window.innerWidth * ++currentPage + 'px';
+            } else {
+                videosDiv.style.left = window.innerWidth * currentPage + 'px';                
+            }
+            break;
+        case -1:
+            if(videosDiv.childNodes.length > vidsOnPage * (-currentPage + 1)){
+                videosDiv.style.left = window.innerWidth * --currentPage + 'px';
+            }
+            break;
+        default:
+            videosDiv.style.left = window.innerWidth * currentPage + 'px';
+    }
+    setTimeout(() => {
+        videosDiv.style.transitionDuration = '0s';
+        block = false;
+    }, 1000);
+    if(!requestSending && videosDiv.childNodes.length < vidsOnPage * (-currentPage + 3)){
+        requestSending = true;
+        sendRequest();
+    }
+}
+
 function mouseUpFunc(){
     if(!mouseDown){
         return;
     }
     mouseDown = false;
     block = true;
-    videosDiv.style.transitionDuration = '1s';
     if(Math.abs(prevX - startX) > window.innerWidth / 4){
         if(prevX > startX){
-            if(currentPage < 0){
-                videosDiv.style.left = window.innerWidth * ++currentPage + 'px';
-            } else {
-                videosDiv.style.left = window.innerWidth * currentPage + 'px';                
-            }
+            changePage(1);
         } else {
-            videosDiv.style.left = window.innerWidth * --currentPage + 'px';            
+            changePage(-1);            
         }
     } else {
-        videosDiv.style.left = window.innerWidth * currentPage + 'px';
+        changePage(0);
     }
-    setTimeout(() => {
-        videosDiv.style.transitionDuration = '0s';
-        block = false;
-    }, 1000)
 }
 
 videosDiv.addEventListener('mousedown', mouseDownFunc);
@@ -101,6 +123,16 @@ videosDiv.addEventListener('touchend', mouseUpFunc);
 
 //videosDiv.addEventListener('mouseout', mouseUpFunc);
 
+body.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if(videosDiv.childNodes){
+        // if(!block){
+            block = true;
+            changePage(-e.deltaY / Math.abs(e.deltaY));
+        // }
+    }
+});
+
 function checkButton(e){
     if(e.keyCode === 13){
         searchButtonPressed();
@@ -112,7 +144,7 @@ function searchButtonPressed(){
     result = undefined;
     videosDiv.innerHTML = '';
     videosDiv.style.left = '0px';
-    videosDiv.style.width = '0px'
+    videosDiv.style.width = '0px';
     currentPage = 0;
     requestSending = true;
     sendRequest();
@@ -140,13 +172,11 @@ function sendRequest(){
         });
           
         request_stat.execute((responce_stat)=>{ 
-            console.log(responce_stat.result);  
             let statistics = responce_stat.result;
             insertVideosFromResponse(statistics);  
             if(result.items.length){
                 requestSending = false; 
             }
-            console.log(result);
         });
     });      
 }
@@ -187,17 +217,16 @@ function createVideo(index, stat){
     <p>${video.snippet.description}</p>
     `;
     clip.style.width = width + 'px';
-    clip.style.marginLeft = clip.style.marginRight = (window.innerWidth / Math.floor(window.innerWidth / 
-        (parseInt(clip.style.width) + 20)) - parseInt(clip.style.width)) / 2 + 'px';
+    clip.style.marginLeft = clip.style.marginRight = marg;
     return clip;
 }
 
 function insertVideosFromResponse(statistics){
-    videosDiv.style.width = parseFloat(videosDiv.style.width) + result.items.length * (width + 2 * parseFloat(marg)) + 'px';
+    videosDiv.style.width = Math.ceil(parseFloat(videosDiv.style.width)) + result.items.length * (Math.ceil(width) + 2 * Math.ceil(parseFloat(marg))) + 'px';
     for(let i = 0; i < result.items.length; i++){
-        let video = createVideo(i, statistics);
-        videosDiv.appendChild(video);   
+        videosDiv.appendChild(createVideo(i, statistics));   
     }
+
 }
 
 let width = Math.min(320, videosDiv.offsetHeight * 0.64);
@@ -213,7 +242,7 @@ body.onresize = () => {
         }
         videosDiv.style.left = window.innerWidth * currentPage + 'px';         
         marg = (window.innerWidth / vidsOnPage - width) / 2 + 'px';
-        videosDiv.style.width = (width + 2 * parseFloat(marg)) * videosDiv.childNodes.length + 'px';
+        videosDiv.style.width = (Math.ceil(width) + 2 * Math.ceil(parseFloat(marg))) * videosDiv.childNodes.length + 'px';
         videosDiv.childNodes.forEach((node) => {
            node.style.width =  width + 'px';
            node.style.marginLeft = node.style.marginRight = marg;

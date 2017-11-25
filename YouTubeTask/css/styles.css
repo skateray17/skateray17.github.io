@@ -86,6 +86,7 @@ body{
 
 .videosDiv{
     display: inline-block;
+    overflow: hidden;
     position: relative;
     height: 80%;
     width: 0px;
