@@ -30,6 +30,7 @@ let startX;
 let requestSending = false;
 let block = false;
 let currentPage;
+let pagesInMove = 0;
 
 videosDiv.style.left = '0px';
 
@@ -37,7 +38,7 @@ function moveVidDiv(e){
     if(e.clientX !== undefined){
         e.preventDefault();
     }
-    if(mouseDown){
+    if(mouseDown && !block){
         let curX = e.clientX || (e.clientX === 0 ? 0 : e['touches'][0]['clientX']);
         if(curX > prevX){
             videosDiv.style.left = Math.min(parseInt(videosDiv.style.left) + curX - prevX, 0) + 'px';
@@ -60,11 +61,8 @@ videosDiv.addEventListener('mousemove', moveVidDiv);
 videosDiv.addEventListener('touchmove', moveVidDiv);
 
 function mouseDownFunc(e){
-    if(block){
-        return;
-    }
     mouseDown = true;
-    startX = prevX = e.clientX || e['touches'][0]['clientX'];
+    startX = prevX = e.clientX || (e.clientX === 0 ? 0 : e['touches'][0]['clientX']);
 }
 
 function changePage(dir){
@@ -86,9 +84,12 @@ function changePage(dir){
         default:
             videosDiv.style.left = window.innerWidth * currentPage + 'px';
     }
+    pagesInMove++;
     setTimeout(() => {
-        videosDiv.style.transitionDuration = '0s';
-        block = false;
+        if(!--pagesInMove){
+            videosDiv.style.transitionDuration = '0s';
+            block = false;
+        }
     }, 1000);
     if(!requestSending && videosDiv.childNodes.length < vidsOnPage * (-currentPage + 3)){
         requestSending = true;
@@ -96,20 +97,20 @@ function changePage(dir){
     }
 }
 
-function mouseUpFunc(){
-    if(!mouseDown){
-        return;
-    }
-    mouseDown = false;
-    block = true;
-    if(Math.abs(prevX - startX) > window.innerWidth / 4){
-        if(prevX > startX){
-            changePage(1);
+function mouseUpFunc(e){
+    if(mouseDown){
+        mouseDown = false;
+        block = true;
+        prevX = e.clientX || (e.clientX === 0 ? 0 : e['touches'][0]['clientX']);
+        if(Math.abs(prevX - startX) > window.innerWidth / 4){
+            if(prevX > startX){
+                changePage(1);
+            } else {
+                changePage(-1);            
+            }
         } else {
-            changePage(-1);            
+            changePage(0);
         }
-    } else {
-        changePage(0);
     }
 }
 
@@ -126,10 +127,8 @@ videosDiv.addEventListener('touchend', mouseUpFunc);
 body.addEventListener('wheel', (e) => {
     e.preventDefault();
     if(videosDiv.childNodes){
-        // if(!block){
-            block = true;
-            changePage(-e.deltaY / Math.abs(e.deltaY));
-        // }
+        block = true;
+        changePage(-e.deltaY / Math.abs(e.deltaY));
     }
 });
 
@@ -249,3 +248,4 @@ body.onresize = () => {
         });
     }
 }
+
