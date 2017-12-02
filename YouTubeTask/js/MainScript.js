@@ -101,7 +101,7 @@ function mouseUpFunc(e){
     if(mouseDown){
         mouseDown = false;
         block = true;
-        prevX = e.clientX || (e.clientX === 0 ? 0 : e['touches'][0]['clientX']);
+        prevX = e.clientX || (e.clientX === 0 ? 0 : e['changedTouches'][0]['clientX']);
         if(Math.abs(prevX - startX) > window.innerWidth / 4){
             if(prevX > startX){
                 changePage(1);
