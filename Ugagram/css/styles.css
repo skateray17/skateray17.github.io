@@ -2,7 +2,7 @@ html, body{
     height: 100%;
     width: 100%;
     margin: 0;
-    min-width: 400px;
+    min-width: 350px;
 }
 
 body{
@@ -79,6 +79,17 @@ a{
     .appName, .verticalLine{
         display: none;
     }
+    .headerDiv{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .footerInfo{
+        margin: auto auto auto 0 !important;
+    }
+    .contacts{
+        max-width: auto 10px auto auto;
+    }
 }
 
 .search{
@@ -86,11 +97,28 @@ a{
 }
 
 .filterByTagAndName{
-    /* border: darkgray 1px 5px; */
+    font-size: 20px;
+    width: 200px;
     border-width: 1px;
     border-color: darkgray;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: rgb(245, 245, 245);
+}
+
+.help{
+    display: none;
+}
+
+.search:hover .help{
+    position: absolute;
+    display: flex;
+    background-color: white;
+    width: 200px;
+    top: 50px;
+    border-width: 1px;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: black;
 }
 
 .dateRange{
@@ -140,13 +168,13 @@ li{
     margin: 8px auto;
     background-color: white;
     display: inline-block;
-    /* height: 400px; */
     width: 100%;
     max-width: 500px;
     border-radius: 5px;
     border-style: solid;
     border-color: rgb(219, 219, 219);
     border-width: 1px;
+    padding-bottom: 10px;
 }
 
 .userInfo{
@@ -161,6 +189,41 @@ li{
 
 .username{
     margin: auto 0;
+}
+
+.profilePopup, .editDeletePopup{
+    display:none;
+    background:white;
+    font-size: 15px;
+}
+
+.profilePopup{
+    margin-left:0px;
+}
+
+.editDeletePopup{
+    margin-left:-30px;
+}
+
+.editDelete{
+    margin: auto 0 auto auto;
+    position: relative;
+}
+
+.editDelete:hover .editDeletePopup, .editDelete:hover .profilePopup{
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0px;
+    padding: 5px;
+    border-width: 1px;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: black;
+}
+
+.editDeleteMenuItem:hover{
+    background-color: rgb(228, 255, 255);
 }
 
 .photo{
@@ -189,13 +252,10 @@ li{
     margin-left: 10px;
 }
 
-.addComentWrapper{
-    padding: 10px;
-}
-
-.addComment{
-    width: 100%;
-    border: 0;
+.publDate{
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(219, 219, 219);
 }
 
 .uploadOlder{
