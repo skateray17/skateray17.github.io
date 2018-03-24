@@ -1,289 +1,375 @@
 html, body{
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    min-width: 350px;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  min-width: 350px;
 }
 
 body{
-    flex-direction: column;
+  flex-direction: column;
 }
 
 a{
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .header{
-    position: fixed;
-    flex: 0 0 auto;
-    border-bottom: 1px solid rgb(219, 219, 219);
-    background-color: white;
-    height: 70px;
-    min-width: 400px;
-    width: 100%;
+  position: fixed;
+  flex: 0 0 auto;
+  border-bottom: 1px solid rgb(219, 219, 219);
+  background-color: white;
+  height: 70px;
+  min-width: 400px;
+  width: 100%;
+  z-index: 1;
 }
 
 .center {
-    margin: auto;
+  margin: auto;
 }
 
 .flex{
-    display: flex;
+  display: flex;
 }
 
 .headerDiv{
-    width: 100%;
-    max-width: 1000px;
-    padding-left: 25px;
-    padding-right: 25px;
+  width: 100%;
+  max-width: 1000px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .appName{
-    font-family: Pacifico;
-    display: inline-block;
-    margin: auto 10px;
+  font-family: Pacifico;
+  display: inline-block;
+  margin: auto 10px;
 }
 
 .logo{
-    margin: 0 0 0 10px;
-    font-size: 25px;
+  margin: 0 0 0 10px;
+  font-size: 25px;
 }
 
 .logoImage{
-    top: 0;
-    margin: auto;
-    height: 35px;
-    width: 35px;
+  top: 0;
+  margin: auto;
+  height: 35px;
+  width: 35px;
 }
 
 .verticalLine{
-    margin: auto 0;
-    height: 80%; 
-    display: inline-block; 
-    border-width: 0 1px 0 0; 
-    border-style: solid; 
-    border-color: black;
-    padding-right: 10px;
+  margin: auto 0;
+  height: 80%; 
+  display: inline-block; 
+  border-width: 0 1px 0 0; 
+  border-style: solid; 
+  border-color: black;
+  padding-right: 10px;
 }
 
 .horizontalLine{
-    border-width: 1px 0 0 0;
-    border-style: solid;
-    border-color: rgb(219, 219, 219);
-    width: 90%;
-    margin: 5px auto;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: rgb(219, 219, 219);
+  width: 90%;
+  margin: 5px auto;
 }
 
 @media screen and (max-width: 550px){
-    .appName, .verticalLine{
-        display: none;
-    }
-    .headerDiv{
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+  .appName, .verticalLine{
+      display: none;
+  }
+  .headerDiv{
+      padding-left: 10px;
+      padding-right: 10px;
+  }
 
-    .footerInfo{
-        margin: auto auto auto 0 !important;
-    }
-    .contacts{
-        max-width: auto 10px auto auto;
-    }
+  .footerInfo{
+      margin: auto auto auto 0 !important;
+  }
+  .contacts{
+      max-width: auto 10px auto auto;
+  }
 }
 
 .search{
-    margin: auto;
+  margin: auto;
 }
 
 .filterByTagAndName{
-    font-size: 20px;
-    width: 200px;
-    border-width: 1px;
-    border-color: darkgray;
-    border-radius: 5px;
-    background-color: rgb(245, 245, 245);
+  font-size: 20px;
+  width: 200px;
+  border-width: 1px;
+  border-color: darkgray;
+  border-radius: 5px;
+  background-color: rgb(245, 245, 245);
 }
 
 .help{
-    display: none;
+  display: none;
 }
 
 .search:hover .help{
-    position: absolute;
-    display: flex;
-    background-color: white;
-    width: 200px;
-    top: 50px;
-    border-width: 1px;
-    border-radius: 3px;
-    border-style: solid;
-    border-color: black;
+  position: absolute;
+  display: flex;
+  background-color: white;
+  width: 200px;
+  top: 50px;
+  border-width: 1px;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: black;
 }
 
 .dateRange{
-    position: relative;
-    font-size: 30px !important;
+  position: relative;
+  font-size: 30px !important;
 }
 
 .dateInputs{
-    display:none;
-    margin-left:-50px;
-    background:white;
-    font-size: 15px;
+  display:none;
+  margin-left:-50px;
+  background:white;
+  font-size: 15px;
 }
 
 .dateRange:hover .dateInputs{
-    display:flex;
-    flex-direction: column;
-    position:absolute;
-    padding: 5px;
-    border-width: 1px;
-    border-radius: 3px;
-    border-style: solid;
-    border-color: black;
-    top:25px;
+  display:flex;
+  flex-direction: column;
+  position:absolute;
+  padding: 5px;
+  border-width: 1px;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: black;
+  top:25px;
 }
 
 .userButtons{
-    margin: 0 10px 0 0;
+  margin: 0 10px 0 0;
 }
 
 .content{
-    margin-top: 70px;
-    flex: 1 0 auto;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
+  margin-top: 70px;
+  flex: 1 0 auto;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
 }
 
 ul{
-    width: 99%;
-    list-style-type: none;
-    padding: 0;
-    flex-direction: column;
+  width: 99%;
+  list-style-type: none;
+  padding: 0;
+  flex-direction: column;
 }
 
 li{
-    margin: 8px auto;
-    background-color: white;
-    display: inline-block;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: rgb(219, 219, 219);
-    border-width: 1px;
-    padding-bottom: 10px;
+  margin: 8px auto;
+  background-color: white;
+  display: inline-block;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(219, 219, 219);
+  border-width: 1px;
+  padding-bottom: 10px;
 }
 
 .userInfo{
-    margin: 5px;
+  margin: 5px;
 }
 
 .userAvatar{
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
 }
 
 .username{
-    margin: auto 0;
+  margin: auto 0;
 }
 
 .profilePopup, .editDeletePopup{
-    display:none;
-    background:white;
-    font-size: 15px;
+  display:none;
+  background:white;
+  font-size: 15px;
 }
 
 .profilePopup{
-    margin-left:0px;
+  width: 70px;
 }
 
 .editDeletePopup{
-    margin-left:-30px;
+  margin-left:-30px;
 }
 
 .editDelete{
-    margin: auto 0 auto auto;
-    position: relative;
+  margin: auto 0 auto auto;
+  position: relative;
+  z-index: 0;
 }
 
 .editDelete:hover .editDeletePopup, .editDelete:hover .profilePopup{
-    display:flex;
-    flex-direction: column;
-    position: absolute;
-    right: 0px;
-    padding: 5px;
-    border-width: 1px;
-    border-radius: 3px;
-    border-style: solid;
-    border-color: black;
+  display:flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0px;
+  padding: 5px;
+  border-width: 1px;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: black;
 }
 
 .editDeleteMenuItem:hover{
-    background-color: rgb(228, 255, 255);
+  background-color: rgb(228, 255, 255);
 }
 
 .photo{
-    width: 100%;
+  width: 100%;
 }
 
 .font40{
-    font-size: 40px !important;
+  font-size: 40px !important;
 }
 .font35{
-    font-size: 35px !important;
+  font-size: 35px !important;
 }
 .font30{
-    font-size: 30px !important;
+  font-size: 30px !important;
 }
 
 .star{
-    margin: 5px;
+  margin: 5px;
 }
 
 .amountOfLikes{
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .comment{
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .publDate{
-    margin: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(219, 219, 219);
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(219, 219, 219);
 }
 
 .uploadOlder{
-    margin: 10px auto;
-    background-color: rgb(245, 245, 245);
-    border-radius: 3px;
-    border-width: 1px;
-    border-style: solid;
+  margin: 10px auto;
+  background-color: rgb(245, 245, 245);
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
 }
 
 footer{
-    flex: 0 0 auto;
-    height: 50px;
-    border-top: 1px solid rgb(219, 219, 219);
+  flex: 0 0 auto;
+  height: 50px;
+  border-top: 1px solid rgb(219, 219, 219);
 }
 
 .footerInfo{
-    margin: auto;
-    text-align: center;
-    color: rgb(219, 219, 219);
-    line-height: 0px;
-    font-size: 10px;
+  margin: auto;
+  text-align: center;
+  color: rgb(219, 219, 219);
+  line-height: 0px;
+  font-size: 10px;
 }
 
 .contacts{
-    margin: auto 10px auto 0;
-    text-align: center;
-    color: rgb(219, 219, 219);
-    line-height: 0px;
-    font-size: 10px;
+  margin: auto 10px auto 0;
+  text-align: center;
+  color: rgb(219, 219, 219);
+  line-height: 0px;
+  font-size: 10px;
+}
+
+.logonBackground{
+width: 100%;
+height: 100%;
+background-image: url(../img/VdIhd_croper_ru.png);
+background-size: cover;
+background-repeat: no-repeat;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+
+.logonDiv{
+width: 100%;
+max-width: 350px;
+padding: 10px;
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+background-color: rgba(236, 236, 236, 0.7);
+}
+
+.logonEmail, .logonPassword{
+margin: 10px;
+width: 70%;
+padding: 5px;
+font-size: 20px;
+border-color: black;
+border-width: 1px;
+}
+
+.logonEmail::-webkit-input-placeholder, .logonPassword::-webkit-input-placeholder{
+opacity: 0.5;
+}
+
+.logonButton{
+width: calc(70% + 12px);/*14px = inputs padding+border*/
+height: 40px;
+background-color: rgb(6, 162, 130);
+color: white;
+margin: 10px;
+font-size: 20px;
+border: 0;
+}
+
+.signIn{
+font-family: 'Times New Roman', Times, serif;
+font-size: 30px;
+margin: 10px;
+}
+
+.logonLogo{
+position: absolute;
+width: 50px;
+top: 10px;
+right: 10px;
+}
+
+.signUpOffer, .signUpOfferLink{
+margin-top: 5px;
+color: white;
+}
+
+.signUpOfferLink{
+text-decoration: underline;
+}
+
+.inputForm {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+
+.addUrl, .addDescr{
+width: 80%;
+border-width:1px; 
+border-style:solid;
 }
