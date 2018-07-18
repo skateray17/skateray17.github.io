@@ -97,12 +97,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_greed_greed_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/greed/greed.component */ "./src/app/components/greed/greed.component.ts");
 /* harmony import */ var _components_header_header_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/header/header.component */ "./src/app/components/header/header.component.ts");
 /* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/footer/footer.component */ "./src/app/components/footer/footer.component.ts");
+/* harmony import */ var _components_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/data.service */ "./src/app/components/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -123,11 +125,53 @@ var AppModule = /** @class */ (function () {
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]
             ],
-            providers: [],
+            providers: [_components_data_service__WEBPACK_IMPORTED_MODULE_6__["DataService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/data.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/components/data.service.ts ***!
+  \********************************************/
+/*! exports provided: DataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DataService = /** @class */ (function () {
+    function DataService() {
+        this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('default message');
+        this.currentMessage = this.messageSource.asObservable();
+    }
+    DataService.prototype.changeMessage = function (message) {
+        this.messageSource.next(message);
+    };
+    DataService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [])
+    ], DataService);
+    return DataService;
 }());
 
 
@@ -215,7 +259,7 @@ module.exports = ".game-greed {\r\n  display: flex;\r\n  flex-flow: row wrap;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div id=\"game-{{ ngModel.gameSize }}\">\n    <div class=\"grid-container\">\n      <div class=\"grid-cell\" ng-repeat=\"cell in ngModel.grid track by $index\"></div>\n    </div>\n  \n    <div class=\"tile-container\">\n      <div tile \n            ng-model='tile'\n            ng-repeat='tile in ngModel.tiles track by $id(tile.id || $index)'></div>\n    </div>\n  </div> -->\n<div class=\"game-greed\" (keyup)=\"onKeyPress($event)\">\n  <div class=\"greed-container\">\n    <div class=\"game-greed-tile-container num{{greed[0][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][3]}}\"></div>\n  </div>\n</div>"
+module.exports = "<!-- <div id=\"game-{{ ngModel.gameSize }}\">\n    <div class=\"grid-container\">\n      <div class=\"grid-cell\" ng-repeat=\"cell in ngModel.grid track by $index\"></div>\n    </div>\n  \n    <div class=\"tile-container\">\n      <div tile \n            ng-model='tile'\n            ng-repeat='tile in ngModel.tiles track by $id(tile.id || $index)'></div>\n    </div>\n  </div> -->\n<div class=\"game-greed\" (keyup)=\"onKeyPress($event)\">\n  <div class=\"greed-container\">\n    <div class=\"game-greed-tile-container num{{greed[0][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][3]}}\"></div>\n  </div>\n</div>\n<button (click)=\"startBot($event)\">запустить игру бота</button>\n<span>population: {{populationNum}}</span>"
 
 /***/ }),
 
@@ -232,6 +276,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hammerjs */ "./node_modules/hammerjs/hammer.js");
 /* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data.service */ "./src/app/components/data.service.ts");
+/* harmony import */ var _brain_2048brain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../brain/2048brain */ "./src/brain/2048brain.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -243,35 +289,50 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
 var GreedComponent = /** @class */ (function () {
-    function GreedComponent() {
+    function GreedComponent(data) {
+        this.data = data;
+        this._score = 0;
+        this.botLearning = false;
         this.init();
+        this.botInd = 0;
+        this.population = [];
+        this.populationNum = 0;
         window.addEventListener('keydown', this.onKeyPress.bind(this));
     }
+    Object.defineProperty(GreedComponent.prototype, "score", {
+        get: function () {
+            return this._score;
+        },
+        set: function (val) {
+            this._score = val;
+            this.data.changeMessage(this.score.toString());
+        },
+        enumerable: true,
+        configurable: true
+    });
     GreedComponent.prototype.ngOnInit = function () {
         var _this = this;
         var elem = document.querySelector('app-greed');
         var manager = new hammerjs__WEBPACK_IMPORTED_MODULE_1___default.a.Manager(elem);
-        var swipe = new hammerjs__WEBPACK_IMPORTED_MODULE_1___default.a.Swipe();
+        var swipe = new hammerjs__WEBPACK_IMPORTED_MODULE_1___default.a.Swipe({ preventDefault: false });
         manager.add(swipe);
         manager.on('swipe', function (e) {
             if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
                 if (e.deltaX > 0) {
                     _this.onKeyPress({ keyCode: 68 });
-                    // this.rightMove();
                 }
                 else {
-                    // this.leftMove();
                     _this.onKeyPress({ keyCode: 65 });
                 }
             }
             else {
                 if (e.deltaY > 0) {
-                    // this.downMove();
                     _this.onKeyPress({ keyCode: 83 });
                 }
                 else {
-                    // this.upMove();
                     _this.onKeyPress({ keyCode: 87 });
                 }
             }
@@ -284,9 +345,9 @@ var GreedComponent = /** @class */ (function () {
             [0, 0, 0, 0],
             [0, 0, 0, 0],
         ];
+        this.score = 0;
         this.placeNumber();
         this.placeNumber();
-        console.log(3);
     };
     GreedComponent.prototype.placeNumber = function () {
         var places = [];
@@ -303,8 +364,21 @@ var GreedComponent = /** @class */ (function () {
         this.checkField();
     };
     GreedComponent.prototype.gameOver = function () {
-        console.log(2);
-        setTimeout(this.init.bind(this), 1000);
+        if (!this.botLearning) {
+            setTimeout(this.init.bind(this), 1000);
+        }
+        else {
+            var max = this.greed[0][0];
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    max = Math.max(max, this.greed[i][j]);
+                }
+            }
+            console.log(max);
+            this.population[this.botInd].fitness = this.score;
+            this.botInd++;
+            this.init();
+        }
     };
     GreedComponent.prototype.leftMove = function () {
         for (var i = 0; i < 4; i++) {
@@ -314,6 +388,7 @@ var GreedComponent = /** @class */ (function () {
                         continue;
                     }
                     if (this.greed[i][k] === this.greed[i][j]) {
+                        this.score += this.greed[i][j];
                         this.greed[i][j] *= 2;
                         this.greed[i][k] = 0;
                     }
@@ -340,6 +415,7 @@ var GreedComponent = /** @class */ (function () {
                         continue;
                     }
                     if (this.greed[i][k] === this.greed[i][j]) {
+                        this.score += this.greed[i][j];
                         this.greed[i][j] *= 2;
                         this.greed[i][k] = 0;
                     }
@@ -366,6 +442,7 @@ var GreedComponent = /** @class */ (function () {
                         continue;
                     }
                     if (this.greed[k][i] === this.greed[j][i]) {
+                        this.score += this.greed[j][i];
                         this.greed[j][i] *= 2;
                         this.greed[k][i] = 0;
                     }
@@ -392,6 +469,7 @@ var GreedComponent = /** @class */ (function () {
                         continue;
                     }
                     if (this.greed[k][i] === this.greed[j][i]) {
+                        this.score += this.greed[j][i];
                         this.greed[j][i] *= 2;
                         this.greed[k][i] = 0;
                     }
@@ -450,7 +528,6 @@ var GreedComponent = /** @class */ (function () {
     };
     GreedComponent.prototype.checkField = function () {
         if (!(this.checkMoveDown() || this.checkMoveLeft() || this.checkMoveRight() || this.checkMoveUp())) {
-            console.log(1);
             return this.gameOver();
         }
     };
@@ -458,41 +535,139 @@ var GreedComponent = /** @class */ (function () {
         for (var i = 0; i < 4; i++) {
             for (var j = 0; j < 4; j++) {
                 if (this.greed[i][j] === 2048) {
-                    this.gameOver(); // TODO win
+                    // this.gameOver();                  // TODO win
+                    clearInterval(this.interval);
                 }
             }
         }
     };
     GreedComponent.prototype.onKeyPress = function (event) {
-        switch (event.keyCode) {
-            case 65:
-                if (this.checkMoveLeft()) {
-                    this.leftMove();
-                    this.checkWin();
-                    return this.placeNumber();
+        if (!this.botLearning) {
+            switch (event.keyCode) {
+                case 65:
+                    if (this.checkMoveLeft()) {
+                        this.leftMove();
+                        this.checkWin();
+                        return this.placeNumber();
+                    }
+                    break;
+                case 83:
+                    if (this.checkMoveDown()) {
+                        this.downMove();
+                        this.checkWin();
+                        return this.placeNumber();
+                    }
+                    break;
+                case 68:
+                    if (this.checkMoveRight()) {
+                        this.rightMove();
+                        this.checkWin();
+                        return this.placeNumber();
+                    }
+                    break;
+                case 87:
+                    if (this.checkMoveUp()) {
+                        this.upMove();
+                        this.checkWin();
+                        return this.placeNumber();
+                    }
+                    break;
+            }
+        }
+    };
+    GreedComponent.prototype.startBot = function () {
+        if (!this.interval) {
+            this.population.length = 0;
+            this.botLearning = true;
+            for (var i = 0; i < 20; i++) {
+                this.population.push(new _brain_2048brain__WEBPACK_IMPORTED_MODULE_3__["Bot"]());
+            }
+            this.interval = setInterval(this.botTurn.bind(this), 0);
+        }
+        else {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+    };
+    GreedComponent.prototype.botTurn = function () {
+        if (this.botInd < 20) {
+            var ans = this.population[this.botInd].output(this.greed);
+            if (!this.checkMoveUp()) {
+                ans[0] = -Infinity;
+            }
+            if (!this.checkMoveLeft()) {
+                ans[1] = -Infinity;
+            }
+            if (!this.checkMoveDown()) {
+                ans[2] = -Infinity;
+            }
+            if (!this.checkMoveRight()) {
+                ans[3] = -Infinity;
+            }
+            var max = ans[0];
+            var maxi = 0;
+            for (var i = 0; i < 4; i++) {
+                if (max < ans[i]) {
+                    max = ans[i];
+                    maxi = i;
                 }
-                break;
-            case 83:
-                if (this.checkMoveDown()) {
-                    this.downMove();
-                    this.checkWin();
-                    return this.placeNumber();
-                }
-                break;
-            case 68:
-                if (this.checkMoveRight()) {
-                    this.rightMove();
-                    this.checkWin();
-                    return this.placeNumber();
-                }
-                break;
-            case 87:
-                if (this.checkMoveUp()) {
+            }
+            switch (maxi) {
+                case 0:
                     this.upMove();
-                    this.checkWin();
-                    return this.placeNumber();
-                }
-                break;
+                    break;
+                case 1:
+                    this.leftMove();
+                    break;
+                case 2:
+                    this.downMove();
+                    break;
+                case 3:
+                    this.rightMove();
+                    break;
+            }
+            this.checkWin();
+            this.placeNumber();
+        }
+        else {
+            console.log("generation " + this.populationNum + " finished");
+            this.naturalSelection();
+        }
+    };
+    GreedComponent.prototype.naturalSelection = function () {
+        var newBots = [];
+        newBots[0] = this.getBestBot();
+        for (var i = 0; i < this.population.length; i++) {
+            var parent1 = this.getRandomBot();
+            var parent2 = this.getRandomBot();
+            var child = parent1.crossover(parent2);
+            child.mutate(0.01);
+            newBots[i] = child;
+        }
+        this.population = newBots;
+        this.populationNum++;
+        this.botInd = 0;
+    };
+    GreedComponent.prototype.getBestBot = function () {
+        var max = this.population[0].fitness;
+        var maxi = 0;
+        for (var i = 0; i < this.population.length; i++) {
+            if (this.population[i].fitness > max) {
+                maxi = i;
+                max = this.population[i].fitness;
+            }
+        }
+        return this.population[maxi];
+    };
+    GreedComponent.prototype.getRandomBot = function () {
+        var fitnessSum = 0;
+        this.population.forEach(function (el) { return fitnessSum += el.fitness; });
+        var rand = Math.floor(Math.random() * fitnessSum);
+        for (var i = 0; i < this.population.length; i++) {
+            rand -= this.population[i].fitness;
+            if (rand < 0) {
+                return this.population[i];
+            }
         }
     };
     GreedComponent = __decorate([
@@ -501,7 +676,7 @@ var GreedComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./greed.component.html */ "./src/app/components/greed/greed.component.html"),
             styles: [__webpack_require__(/*! ./greed.component.css */ "./src/app/components/greed/greed.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], GreedComponent);
     return GreedComponent;
 }());
@@ -543,6 +718,7 @@ module.exports = "<header class=\"header\">\n  <h1 class=\"title\">\n    2048\n 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data.service */ "./src/app/components/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -553,12 +729,22 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var HeaderComponent = /** @class */ (function () {
-    function HeaderComponent() {
+    function HeaderComponent(data) {
+        this.data = data;
         this.currentScore = 0;
-        this.bestScore = 0;
+        this.bestScore = Number.parseInt(localStorage.getItem('bestScore')) || 0;
     }
     HeaderComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.currentMessage.subscribe(function (message) {
+            _this.currentScore = Number.parseInt(message) || 0;
+            if (_this.currentScore > _this.bestScore) {
+                _this.bestScore = _this.currentScore;
+                localStorage.setItem('bestScore', _this.bestScore.toString());
+            }
+        });
     };
     HeaderComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -566,9 +752,269 @@ var HeaderComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./header.component.html */ "./src/app/components/header/header.component.html"),
             styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/components/header/header.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
     ], HeaderComponent);
     return HeaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/brain/2048brain.ts":
+/*!********************************!*\
+  !*** ./src/brain/2048brain.ts ***!
+  \********************************/
+/*! exports provided: Bot */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bot", function() { return Bot; });
+/* harmony import */ var _Net__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Net */ "./src/brain/Net.ts");
+
+
+var Bot = /** @class */ (function () {
+    function Bot() {
+        this.brain = new _Net__WEBPACK_IMPORTED_MODULE_0__["NeuralNet"]([16, 12, 12, 4]);
+    }
+    Bot.prototype.mutate = function (mr) {
+        this.brain.mutate(mr);
+    };
+    Bot.prototype.output = function (input) {
+        var inp = [];
+        var max = 0;
+        for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 4; j++) {
+                inp.push(input[i][j]);
+            }
+        }
+        max = Math.max.apply(Math, inp);
+        inp.map(function (el) { return Math.log(el) / Math.log(max); });
+        return this.brain.forwardPropagation(inp);
+    };
+    Bot.prototype.crossover = function (partner) {
+        var child = new Bot();
+        child.brain = this.brain.crossover(partner.brain);
+        return child;
+    };
+    Bot.prototype.clone = function () {
+        var clone = new Bot();
+        clone.brain = this.brain.clone();
+        return clone;
+    };
+    return Bot;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/brain/Matrix.ts":
+/*!*****************************!*\
+  !*** ./src/brain/Matrix.ts ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+var Matrix = /** @class */ (function () {
+    function Matrix(rows, cols) {
+        if (rows === void 0) { rows = 0; }
+        if (cols === void 0) { cols = 0; }
+        this.rows = rows;
+        this.cols = cols;
+        this.matrix = [];
+        for (var i = 0; i < rows; i++) {
+            this.matrix[i] = new Array(cols).fill(0, 0, cols);
+        }
+    }
+    Matrix.prototype.dot = function (m) {
+        if (this.cols !== m.rows) {
+            console.log(m, this);
+            throw new Error('Invalid sizes' + this.cols + ' ' + this.rows + ' ' + m.cols + ' ' + m.rows);
+        }
+        var res = new Matrix(this.rows, m.cols);
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < m.cols; j++) {
+                for (var k = 0; k < this.cols; k++) {
+                    res.matrix[i][j] += this.matrix[i][k] * m.matrix[k][j];
+                }
+            }
+        }
+        return res;
+    };
+    Matrix.prototype.transpose = function () {
+        var res = new Matrix(this.cols, this.rows);
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                res.matrix[j][i] = this.matrix[i][j];
+            }
+        }
+        return res;
+    };
+    Matrix.prototype.randomize = function () {
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                this.matrix[i][j] = Math.random() - Math.random();
+            }
+        }
+        return this;
+    };
+    Matrix.prototype.addNumber = function (n) {
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                this.matrix[j][i] += n;
+            }
+        }
+        return this;
+    };
+    Matrix.prototype.multiplyByNumber = function (n) {
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                this.matrix[j][i] *= n;
+            }
+        }
+        return this;
+    };
+    Matrix.prototype.rowFromArray = function (arr) {
+        this.rows = 1;
+        this.cols = arr.length;
+        this.matrix = [arr];
+        return this;
+    };
+    Matrix.prototype.colFromArray = function (arr) {
+        this.cols = 1;
+        this.rows = arr.length;
+        this.matrix = arr.map(function (el) { return [el]; });
+        return this;
+    };
+    Matrix.prototype.toArray = function () {
+        var res = [];
+        this.matrix.forEach(function (row) { return row.forEach(function (el) { return res.push(el); }); });
+        return res;
+    };
+    Matrix.prototype.activateSig = function () {
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                this.matrix[i][j] = sigmoid(this.matrix[i][j]);
+            }
+        }
+        return this;
+    };
+    Matrix.prototype.mutate = function (mutationRate) {
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                var rand = Math.random();
+                if (rand < mutationRate) {
+                    this.matrix[i][j] += (Math.random() - 1) / 2.5;
+                    if (this.matrix[i][j] > 1) {
+                        this.matrix[i][j] = 1;
+                    }
+                    if (this.matrix[i][j] < -1) {
+                        this.matrix[i][j] = -1;
+                    }
+                }
+            }
+        }
+        return this;
+    };
+    Matrix.prototype.crossover = function (partner) {
+        var child = new Matrix(this.rows, this.cols);
+        var randR = Math.floor(Math.random() * this.rows);
+        var randC = Math.floor(Math.random() * this.cols);
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                if (i < randR || (i === randR && j < randC)) {
+                    child.matrix[i][j] = this.matrix[i][j];
+                }
+                else {
+                    child.matrix[i][j] = partner.matrix[i][j];
+                }
+            }
+        }
+        return child;
+    };
+    Matrix.prototype.addBias = function () {
+        var n = new Matrix(1, this.cols + 1);
+        for (var i = 0; i < this.cols; i++) {
+            n.matrix[0][i] = this.matrix[0][i];
+        }
+        n.matrix[0][this.cols] = 1;
+        return n;
+    };
+    Matrix.prototype.clone = function () {
+        var clone = new Matrix(this.rows, this.cols);
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                clone.matrix[i][j] = this.matrix[i][j];
+            }
+        }
+        return clone;
+    };
+    return Matrix;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Matrix);
+function sigmoid(a) {
+    return 1 / (1 + Math.exp(a));
+}
+
+
+/***/ }),
+
+/***/ "./src/brain/Net.ts":
+/*!**************************!*\
+  !*** ./src/brain/Net.ts ***!
+  \**************************/
+/*! exports provided: NeuralNet */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NeuralNet", function() { return NeuralNet; });
+/* harmony import */ var _Matrix__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Matrix */ "./src/brain/Matrix.ts");
+
+
+var NeuralNet = /** @class */ (function () {
+    function NeuralNet(sizes) {
+        this.inputToFirstHidden = new _Matrix__WEBPACK_IMPORTED_MODULE_0__["default"](sizes[0] + 1, sizes[1]);
+        this.inputToFirstHidden.randomize();
+        this.firstHiddenToSecondHidden = new _Matrix__WEBPACK_IMPORTED_MODULE_0__["default"](sizes[1] + 1, sizes[2]);
+        this.firstHiddenToSecondHidden.randomize();
+        this.secondHiddenToOutput = new _Matrix__WEBPACK_IMPORTED_MODULE_0__["default"](sizes[2] + 1, sizes[3]);
+        this.secondHiddenToOutput.randomize();
+        this.sizes = sizes;
+    }
+    NeuralNet.prototype.forwardPropagation = function (input) {
+        return new _Matrix__WEBPACK_IMPORTED_MODULE_0__["default"]().rowFromArray(input).addBias()
+            .dot(this.inputToFirstHidden).activateSig().addBias()
+            .dot(this.firstHiddenToSecondHidden).activateSig().addBias()
+            .dot(this.secondHiddenToOutput).activateSig()
+            .toArray();
+    };
+    NeuralNet.prototype.mutate = function (mutationRate) {
+        this.inputToFirstHidden.mutate(mutationRate);
+        this.firstHiddenToSecondHidden.mutate(mutationRate);
+        this.secondHiddenToOutput.mutate(mutationRate);
+        return this;
+    };
+    NeuralNet.prototype.crossover = function (partner) {
+        var child = new NeuralNet(this.sizes);
+        child.inputToFirstHidden = this.inputToFirstHidden.crossover(partner.inputToFirstHidden);
+        child.firstHiddenToSecondHidden = this.firstHiddenToSecondHidden.crossover(partner.firstHiddenToSecondHidden);
+        child.secondHiddenToOutput = this.secondHiddenToOutput.crossover(partner.secondHiddenToOutput);
+        return child;
+    };
+    NeuralNet.prototype.clone = function () {
+        var clone = new NeuralNet(this.sizes);
+        clone.inputToFirstHidden = this.inputToFirstHidden.clone();
+        clone.firstHiddenToSecondHidden = this.firstHiddenToSecondHidden.clone();
+        clone.secondHiddenToOutput = this.secondHiddenToOutput.clone();
+        return clone;
+    };
+    return NeuralNet;
 }());
 
 
