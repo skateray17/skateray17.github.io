@@ -248,7 +248,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".game-greed {\r\n  display: flex;\r\n  flex-flow: row wrap;\r\n  justify-content: space-around;\r\n  align-content: space-around;\r\n  position: relative;\r\n  padding: 15px;\r\n  cursor: default;\r\n  background: #bbaaa0;\r\n  border-radius: 6px;\r\n  width: 400px;\r\n  height: 400px;\r\n  margin: auto;\r\n  \r\n}\r\n\r\n.greed-container {\r\n  display: flex;\r\n  flex-flow: row wrap;\r\n  justify-content: space-around;\r\n  align-content: space-around;\r\n  height: 100%;\r\n}\r\n\r\n.game-greed-tile-container {\r\n  height: 81.25px;\r\n  width: 81.25px;\r\n  position: relative;\r\n  background: rgba(238,228,218,.35);\r\n}\r\n\r\n.game-greed-tile-container::after {\r\n  display: table-cell;\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0;\r\n  font-size: 25px;\r\n  line-height: 81.25px;\r\n  text-align: center;\r\n  color: #ffffff;\r\n}\r\n\r\n.num2::after {\r\n  background: #EEE4DA;\r\n  content: \"2\";\r\n}\r\n\r\n.num4::after {\r\n  background: #EAE0C8;\r\n  content: \"4\";\r\n}\r\n\r\n.num8::after {\r\n  background: #F59563;\r\n  content: \"8\";\r\n}\r\n\r\n.num16::after {\r\n  background: #39f;\r\n  content: \"16\";\r\n}\r\n\r\n.num32::after {\r\n  background: #ffa333;\r\n  content: \"32\";\r\n}\r\n\r\n.num64::after {\r\n  background: #cef030;\r\n  content: \"64\";\r\n}\r\n\r\n.num128::after {\r\n  background: #E8D8CE;\r\n  content: \"128\";\r\n}\r\n\r\n.num256::after {\r\n  background: #990303;\r\n  content: \"256\";\r\n}\r\n\r\n.num512::after {\r\n  background: #6BA5DE;\r\n  content: \"512\";\r\n}\r\n\r\n.num1024::after {\r\n  background: #DCAD60;\r\n  content: \"1024\";\r\n}\r\n\r\n.num2048::after {\r\n  background: #B60022;\r\n  content: \"2048\";\r\n}"
+module.exports = ".game-greed {\r\n  display: flex;\r\n  flex-flow: row wrap;\r\n  justify-content: space-around;\r\n  align-content: space-around;\r\n  position: relative;\r\n  padding: 15px;\r\n  cursor: default;\r\n  background: #bbaaa0;\r\n  border-radius: 6px;\r\n  width: 400px;\r\n  height: 400px;\r\n  margin: auto;\r\n  \r\n}\r\n\r\n.greed-container {\r\n  display: flex;\r\n  flex-flow: row wrap;\r\n  justify-content: space-around;\r\n  align-content: space-around;\r\n  height: 100%;\r\n}\r\n\r\n.game-greed-tile-container {\r\n  height: 81.25px;\r\n  width: 81.25px;\r\n  position: relative;\r\n  background: rgba(238,228,218,.35);\r\n}\r\n\r\n.game-greed-tile-container::after {\r\n  display: table-cell;\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0;\r\n  font-size: 25px;\r\n  line-height: 81.25px;\r\n  text-align: center;\r\n  color: #ffffff;\r\n}\r\n\r\n.num2::after {\r\n  background: #EEE4DA;\r\n  content: \"2\";\r\n}\r\n\r\n.num4::after {\r\n  background: #EAE0C8;\r\n  content: \"4\";\r\n}\r\n\r\n.num8::after {\r\n  background: #F59563;\r\n  content: \"8\";\r\n}\r\n\r\n.num16::after {\r\n  background: #39f;\r\n  content: \"16\";\r\n}\r\n\r\n.num32::after {\r\n  background: #ffa333;\r\n  content: \"32\";\r\n}\r\n\r\n.num64::after {\r\n  background: #cef030;\r\n  content: \"64\";\r\n}\r\n\r\n.num128::after {\r\n  background: #E8D8CE;\r\n  content: \"128\";\r\n}\r\n\r\n.num256::after {\r\n  background: #990303;\r\n  content: \"256\";\r\n}\r\n\r\n.num512::after {\r\n  background: #6BA5DE;\r\n  content: \"512\";\r\n}\r\n\r\n.num1024::after {\r\n  background: #DCAD60;\r\n  content: \"1024\";\r\n}\r\n\r\n.num2048::after {\r\n  background: #B60022;\r\n  content: \"2048\";\r\n}\r\n\r\n.num4096::after {\r\n  background: rgb(214, 12, 204);\r\n  content: \"4096\";\r\n}\r\n\r\n.num8192::after {\r\n  background: rgb(57, 211, 121);\r\n  content: \"8192\";\r\n}\r\n\r\n.num16384::after {\r\n  background: rgb(186, 212, 39);\r\n  content: \"16384\";\r\n}"
 
 /***/ }),
 
@@ -259,7 +259,7 @@ module.exports = ".game-greed {\r\n  display: flex;\r\n  flex-flow: row wrap;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div id=\"game-{{ ngModel.gameSize }}\">\n    <div class=\"grid-container\">\n      <div class=\"grid-cell\" ng-repeat=\"cell in ngModel.grid track by $index\"></div>\n    </div>\n  \n    <div class=\"tile-container\">\n      <div tile \n            ng-model='tile'\n            ng-repeat='tile in ngModel.tiles track by $id(tile.id || $index)'></div>\n    </div>\n  </div> -->\n<div class=\"game-greed\" (keyup)=\"onKeyPress($event)\">\n  <div class=\"greed-container\">\n    <div class=\"game-greed-tile-container num{{greed[0][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][3]}}\"></div>\n  </div>\n</div>\n<button (click)=\"startBot($event)\">запустить игру бота</button>\n<span>population: {{populationNum}}</span>"
+module.exports = "<!-- <div id=\"game-{{ ngModel.gameSize }}\">\n    <div class=\"grid-container\">\n      <div class=\"grid-cell\" ng-repeat=\"cell in ngModel.grid track by $index\"></div>\n    </div>\n  \n    <div class=\"tile-container\">\n      <div tile \n            ng-model='tile'\n            ng-repeat='tile in ngModel.tiles track by $id(tile.id || $index)'></div>\n    </div>\n  </div> -->\n<div class=\"game-greed\" (keyup)=\"onKeyPress($event)\">\n  <div class=\"greed-container\">\n    <div class=\"game-greed-tile-container num{{greed[0][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[0][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[1][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[2][3]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][0]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][1]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][2]}}\"></div>\n    <div class=\"game-greed-tile-container num{{greed[3][3]}}\"></div>\n  </div>\n</div>\n<button (click)=\"startBot($event)\">start bot</button><br>\n<button (click)=\"botTurn()\">single bot turn</button><br>\n<span>generation: {{generationNum}}</span><br>\n<span>Mutation Rate:</span><input type=\"number\" (keyup)=\"setMutationRate($event)\" placeholder=\"0.01\"><br>\n<span>Population Size:</span><input type=\"number\" (keyup)=\"setPopulationSize($event)\" placeholder=\"20\">"
 
 /***/ }),
 
@@ -295,11 +295,13 @@ var GreedComponent = /** @class */ (function () {
     function GreedComponent(data) {
         this.data = data;
         this._score = 0;
+        this.mutationRate = 0.01;
+        this.populationSize = 20;
         this.botLearning = false;
         this.init();
         this.botInd = 0;
         this.population = [];
-        this.populationNum = 0;
+        this.generationNum = 0;
         window.addEventListener('keydown', this.onKeyPress.bind(this));
     }
     Object.defineProperty(GreedComponent.prototype, "score", {
@@ -537,6 +539,7 @@ var GreedComponent = /** @class */ (function () {
                 if (this.greed[i][j] === 2048) {
                     // this.gameOver();                  // TODO win
                     clearInterval(this.interval);
+                    this.interval = null;
                 }
             }
         }
@@ -577,20 +580,22 @@ var GreedComponent = /** @class */ (function () {
     };
     GreedComponent.prototype.startBot = function () {
         if (!this.interval) {
-            this.population.length = 0;
             this.botLearning = true;
-            for (var i = 0; i < 20; i++) {
-                this.population.push(new _brain_2048brain__WEBPACK_IMPORTED_MODULE_3__["Bot"]());
+            if (!this.population.length) {
+                for (var i = 0; i < this.populationSize; i++) {
+                    this.population.push(new _brain_2048brain__WEBPACK_IMPORTED_MODULE_3__["Bot"]());
+                }
             }
             this.interval = setInterval(this.botTurn.bind(this), 0);
         }
         else {
             clearInterval(this.interval);
+            this.botLearning = false;
             this.interval = null;
         }
     };
     GreedComponent.prototype.botTurn = function () {
-        if (this.botInd < 20) {
+        if (this.botInd < this.population.length) {
             var ans = this.population[this.botInd].output(this.greed);
             if (!this.checkMoveUp()) {
                 ans[0] = -Infinity;
@@ -630,23 +635,32 @@ var GreedComponent = /** @class */ (function () {
             this.placeNumber();
         }
         else {
-            console.log("generation " + this.populationNum + " finished");
+            console.log("generation " + this.generationNum + " finished");
             this.naturalSelection();
         }
     };
     GreedComponent.prototype.naturalSelection = function () {
         var newBots = [];
         newBots[0] = this.getBestBot();
-        for (var i = 0; i < this.population.length; i++) {
+        console.log('generation fitness: ', this.getTotalFitnessSum());
+        for (var i = 1; i < this.populationSize; i++) {
             var parent1 = this.getRandomBot();
             var parent2 = this.getRandomBot();
             var child = parent1.crossover(parent2);
-            child.mutate(0.01);
+            child.mutate(this.mutationRate);
             newBots[i] = child;
         }
         this.population = newBots;
-        this.populationNum++;
+        this.generationNum++;
         this.botInd = 0;
+    };
+    GreedComponent.prototype.setPopulationSize = function (event) {
+        this.populationSize = Number.parseInt(event.target.value);
+        return this;
+    };
+    GreedComponent.prototype.setMutationRate = function (event) {
+        this.mutationRate = Number.parseFloat(event.target.value);
+        return this;
     };
     GreedComponent.prototype.getBestBot = function () {
         var max = this.population[0].fitness;
@@ -659,13 +673,16 @@ var GreedComponent = /** @class */ (function () {
         }
         return this.population[maxi];
     };
+    GreedComponent.prototype.getTotalFitnessSum = function () {
+        return this.population.reduce(function (pr, el) { return pr + el.fitness; }, 0);
+    };
     GreedComponent.prototype.getRandomBot = function () {
         var fitnessSum = 0;
         this.population.forEach(function (el) { return fitnessSum += el.fitness; });
         var rand = Math.floor(Math.random() * fitnessSum);
         for (var i = 0; i < this.population.length; i++) {
             rand -= this.population[i].fitness;
-            if (rand < 0) {
+            if (rand <= 0) {
                 return this.population[i];
             }
         }
@@ -790,8 +807,7 @@ var Bot = /** @class */ (function () {
             }
         }
         max = Math.max.apply(Math, inp);
-        inp.map(function (el) { return Math.log(el) / Math.log(max); });
-        return this.brain.forwardPropagation(inp);
+        return this.brain.forwardPropagation(inp.map(function (el) { return Math.max(Math.log(el) / Math.log(max), 0); }));
     };
     Bot.prototype.crossover = function (partner) {
         var child = new Bot();
